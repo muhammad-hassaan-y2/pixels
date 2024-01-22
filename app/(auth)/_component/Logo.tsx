@@ -16,7 +16,7 @@ const Logo = () => {
          <Image 
          height="80" 
          width= "80"
-         src="/spoooky.svg"
+         src="/spooky.svg"
           alt= "LOGO"/>
        </div> 
        
