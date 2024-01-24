@@ -1,5 +1,7 @@
 import React from 'react'
 import Navbar from './_components/navbar'
+import Sidebar from './_components/sidebar/Sidebar'
+import Container from './_components/Container'
 
 const BrowseLayout = ({
     children,
@@ -8,7 +10,10 @@ const BrowseLayout = ({
     <>
      <Navbar />
      <div className='flex h-full pt-20'>
-      {children}
+      <Sidebar />
+      <Container>
+       {children}
+      </Container>
      </div>
 
     

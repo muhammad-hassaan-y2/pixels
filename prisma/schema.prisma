@@ -3,18 +3,17 @@ generator client {
 }
 
 datasource db {
-  provider  = "postgresql"
-  url       = env("POSTGRES_PRISMA_URL")
-  directUrl = env("POSTGRES_URL_NON_POOLING")
+  provider = "mysql"
+  url      = env("DATABASE_URL")
 }
 
-model User {
-  id             String   @id @default(uuid())
-  username       String   @unique
+model user {
+  id             String   @id
+  username       String   @unique(map: "User_username_key")
   imageUrl       String
-  externalUserId String   @unique
+  externalUserId String   @unique(map: "User_externalUserId_key")
   bio            String?
-  password       String
+  password       String?
   createdAt      DateTime @default(now())
-  updatedAt      DateTime @updatedAt
+  updatedAt      DateTime
 }
