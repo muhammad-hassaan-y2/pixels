@@ -1,23 +1,20 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-datasource db {
-  provider = "cockroachdb"
-  url      = env("DATABASE_URL")
-  relationMode = "prisma"
-}
-
 generator client {
   provider = "prisma-client-js"
 }
 
-model User {
-    id String @id @default(uuid())
-    username String @unique
-    imageUrl String // @db.Text
-    externalUserId String @unique
-    bio String? // @db.Text
+datasource db {
+  provider  = "postgresql"
+  url       = env("POSTGRES_PRISMA_URL")
+  directUrl = env("POSTGRES_URL_NON_POOLING")
+}
 
-    createdAt DateTime @default(now())
-    updatedAt DateTime @updatedAt
+model User {
+  id             String   @id @default(uuid())
+  username       String   @unique
+  imageUrl       String
+  externalUserId String   @unique
+  bio            String?
+  password       String
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
 }
